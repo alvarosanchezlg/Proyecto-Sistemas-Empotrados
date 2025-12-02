@@ -1,0 +1,25 @@
+const int pinLed = 2;
+const int btnOn  = 4;
+const int btnOff = 5;
+
+void setup() {
+  pinMode(pinLed, OUTPUT);
+
+  // Activamos resistencia PULLUP interna
+  pinMode(btnOn, INPUT_PULLUP);
+  pinMode(btnOff, INPUT_PULLUP);
+}
+
+void loop() {
+  // Con PULLUP: sin pulsar = HIGH, pulsado = LOW
+  bool onPressed  = (digitalRead(btnOn)  == LOW);
+  bool offPressed = (digitalRead(btnOff) == LOW);
+
+  if (onPressed) {
+    digitalWrite(pinLed, HIGH);
+  }
+
+  if (offPressed) {
+    digitalWrite(pinLed, LOW);
+  }
+}
